@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Heading } from '@chakra-ui/react'
+import { Button, Heading, useColorModeValue, Card,  CardBody, Image, } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -47,7 +47,9 @@ const Home = () => {
       }
     }
 
-  return (
+    
+    const bg = useColorModeValue('light', 'blue.500')
+  return personajes?  (
     <>  
     <Header/>
         <ArrowBackIcon
@@ -55,6 +57,7 @@ const Home = () => {
         color="gray.500"
         cursor="pointer"
         onClick={()=> navigate(-1)}
+        bg={bg}
         />
         <br/>
       <Heading color="purple">WELCOME {name} </Heading>
@@ -79,9 +82,10 @@ const Home = () => {
       {
        personajes.map((i)=>{
         return (
-            <CharacterCards key={i.id} >
+            <Card key={i.id} >
+              <CardBody>
               <img src={i.image}/>
-              <p>{i.name}</p>
+              <Heading size="sm">{i.name}</Heading>
               <p>{i.status}</p>
               <p>{i.species}</p>
               <p>location: {i.location.name}</p>
@@ -90,14 +94,16 @@ const Home = () => {
               colorScheme='messenger'
               >Save</SuccessAlert>
               </div>
+              </CardBody>
+              
             
-            </CharacterCards>
+            </Card>
         )
       })}
       </ContainerCharacters>
       </>
     </>
-  )
-}
+  ) : <div>CARGANDO</div>
+} 
 
 export default Home

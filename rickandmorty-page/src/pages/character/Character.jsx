@@ -8,6 +8,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import SuccessAlert from '../../components/SuccessAlert'
 import { addFavorite } from '../../state/reducers/favoriteSlice'
 import { useNavigate } from 'react-router-dom'
+import Header from '../../components/Header'
+
 
 const ConatinerCharacter = styled.div`
 display: flex;
@@ -61,6 +63,7 @@ function Character() {
       }
   return (
     <>
+    <Header/>
     <Heading>Personaje</Heading>
     <ArrowBackIcon
     fontSize="80px"
