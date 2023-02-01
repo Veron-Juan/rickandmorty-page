@@ -57,7 +57,7 @@ const ContainAlert = styled.div`
         <>
           {/* <ModalCloseButton  onClick={()=> probando()} /> */}
           {/* <Button onClick={()=> open? isopen : null}>Open Modal</Button> */}
-          <Button  onClick={onOpen} >Save</Button>
+          <Button colorScheme="teal"  onClick={onOpen} >Save</Button>
     
           <Modal   position="absolute"   isOpen={isOpen} onClose={onClose} >
             {/* <ModalOverlay /> */}

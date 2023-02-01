@@ -52,13 +52,13 @@ const Home = () => {
   return personajes?  (
     <>  
     <Header/>
-        <ArrowBackIcon
+        {/* <ArrowBackIcon
         fontSize="55px"
         color="gray.500"
         cursor="pointer"
         onClick={()=> navigate(-1)}
         bg={bg}
-        />
+        /> */}
         <br/>
       <Heading color="purple">WELCOME {name} </Heading>
       <>
@@ -89,10 +89,8 @@ const Home = () => {
               <p>{i.status}</p>
               <p>{i.species}</p>
               <p>location: {i.location.name}</p>
-              <div onClick={()=> AgregarFav(i)}>
-              <SuccessAlert
-              colorScheme='messenger'
-              >Save</SuccessAlert>
+              <div  onClick={()=> AgregarFav(i)}>
+              <SuccessAlert/>
               </div>
               </CardBody>
               

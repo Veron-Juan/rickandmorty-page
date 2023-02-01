@@ -1,8 +1,19 @@
 import styled from "styled-components";
 import vite from "../../public/vite.svg"
-import { Input, InputGroup, InputLeftElement, useColorMode, useColorModeValue,Switch, Flex, Select,  background} from '@chakra-ui/react'
-import { Search2Icon} from '@chakra-ui/icons'
-import { useState} from "react";
+import { Input, InputGroup, InputLeftElement, useColorMode, useColorModeValue, Flex,  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Button,
+useDisclosure, 
+Heading} from '@chakra-ui/react'
+import {Link as RouteLink
+} from "react-router-dom";
+import { Search2Icon,  HamburgerIcon, MoonIcon} from '@chakra-ui/icons'
+import { useRef, useState} from "react";
 import { Link} from "react-router-dom";
 import { useCharecters } from "../hooks/useCharacters";
 import logo from "../../public/logoRickAndMorty.png"
@@ -26,6 +37,17 @@ height: 110px;
 display: flex;
 align-items: center;
 justify-content: space-evenly;
+@media (max-width: 852px) {
+    justify-content: center;
+    gap: 20px;
+  }
+@media (max-width: 540px) {
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    gap: 10px;
+    height: 100%;
+  }
 
 ul{
     display: flex;
@@ -54,7 +76,7 @@ display: ${({ isRight}) => isRight ? 'block' : 'none'};
 
 
 ul{
-    width: 320px;
+    width: 250px;
     display: flex;
     align-items: center;
     background-color: #c8dae1d5;
@@ -79,14 +101,15 @@ ul{
 
 `
 const LinkRout = styled(Link)`
-        margin: 2.2px;
-        padding: 4px;
-        width: 100%;
-        color: #111111;
+        
+        
+        font-size: 17px;
+        color: #286b6a;
         font-weight: bold;
         &:hover{
             background-color: aliceblue;
             color: #709fcd;
+            width: 100%;
         }
 `
 
@@ -112,9 +135,34 @@ img{
 
 const Links = styled.div`
 display: flex;
-@media (max-width: 914px) {
+justify-content: space-around;
+gap: 10px;
+@media (max-width: 852px) {
     display: none;
   }
+`
+
+const LogoHeader = styled.div`
+display: flex;
+align-items: center;
+@media (max-width: 852px) {
+    display: none;
+  }
+`
+
+const ContainerMenuBurguer = styled.span`
+position: absolute;
+top: 32px;
+right: 10px;
+
+@media (min-width: 852px) {
+    display: none;
+  }
+
+  @media (max-width: 540px){
+    top: 2px;
+  }
+
 `
 
 
@@ -126,6 +174,8 @@ function Header() {
     const {personajes} = useCharecters(API_RICKANDMORTY_CHARACTERS)
     const [theme, toggleTheme] = useThemeMode();
     const { toggleColorMode } = useColorMode()
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const btnRef = useRef()
     const [check, setCheck] = useState(false)    
     // const {a, b} = themes
     
@@ -156,7 +206,52 @@ function Header() {
       
     <HeaderContainer>
       <img style={{maxWidth:"130px", minWidth:"90px"}} src={logorickandmorty} />
-      <Search>
+      <ContainerMenuBurguer>
+      <HamburgerIcon cursor="pointer" fontSize="32px" onClick={onOpen} position="absolute" top="7px" right="18px" />
+      </ContainerMenuBurguer>
+      <Drawer
+        isOpen={isOpen}
+        placement='right'
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <Flex marginTop="5px" align="center" justify="center"  >
+      <label  className="switch" >
+        <input  type="checkbox" onClick={toggleColorMode}   />
+          <span className="slider round"></span>
+      </label>
+      <Flex bg={bg} align="center" justify="center" borderRadius="50%" >
+      <BackLogo >
+        <img  src={logo} alt="Dark Mode"/>
+      </BackLogo>
+      </Flex>
+      </Flex>
+          <DrawerHeader>
+          <Link as={RouteLink} to="/favorites">Favorites</Link>
+          </DrawerHeader>
+          <DrawerHeader>
+          <Link as={RouteLink} to="/favorites">Location</Link>
+          </DrawerHeader>
+          <DrawerHeader>
+          <Link as={RouteLink} to="/home">Home</Link>
+          </DrawerHeader>
+          <DrawerHeader>
+          <Link as={RouteLink} to="/favorites">This repository</Link>
+          </DrawerHeader>
+          <DrawerHeader>
+          <Link as={RouteLink} to="/favorites">About me</Link>
+          </DrawerHeader>
+          
+
+          
+    
+          
+        </DrawerContent>
+      </Drawer>
+      <Search >
         <InputGroup>
           <InputLeftElement children={<Search2Icon color="gray.300" />} />
           <Input multiple onChange={handleChange} value={busqueda} placeholder="Search" width="250px" />
@@ -174,8 +269,8 @@ function Header() {
       </Search>
        
       
-
-      <Flex align="center" justify="center"  >
+      
+      <LogoHeader>
       <label  className="switch" >
         <input  type="checkbox" onClick={toggleColorMode}   />
           <span className="slider round"></span>
@@ -185,16 +280,18 @@ function Header() {
         <img  src={logo} alt="Dark Mode"/>
       </BackLogo>
       </Flex>
-      </Flex>
+      </LogoHeader>
       
       <Links>
       
-      <ul>
-        <li>Home</li>
-        <Link to="/favorites" >Favorites</Link>
-        <li>asdsa</li>
-        <li>asddas</li>
-      </ul>
+      
+        
+      <LinkRout  to="/favorites">Home</LinkRout>
+      <LinkRout  to="/favorites">Favorites</LinkRout>
+      <LinkRout  to="/favorites">Location</LinkRout>
+      <LinkRout  to="/favorites">About me</LinkRout>
+        
+      
       </Links>
     </HeaderContainer>
     
