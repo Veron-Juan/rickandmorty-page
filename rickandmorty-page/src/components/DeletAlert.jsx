@@ -12,8 +12,8 @@ import {
     
     
   } from '@chakra-ui/react'
-
-  import { Link } from 'react-router-dom'
+  import { DeleteIcon } from '@chakra-ui/icons'
+  
 
 import { useDisclosure } from '@chakra-ui/react'
 
@@ -27,7 +27,7 @@ const ContainAlert = styled.div`
  position: absolute;
  top: 80vh;
  animation: .9s ${breatheAnimation} linear both;
- display: ${({ isRight}) => isRight ? 'block' : 'none'};
+ /* display: ${({ isRight}) => isRight ? 'block' : 'none'}; */
  /* animation-duration: 1s; */
  
  /* animation-iteration-count: infinite; */
@@ -45,36 +45,27 @@ const ContainAlert = styled.div`
       const [alarma, setAlarma] = useState(true)
       const [open, setOpen] = useState(false)
   
-      const probando = ()=>{
-        setTimeout(() => {
-          setAlarma(!alarma)
-          
-        }, 2000);
-        setOpen(!open)
-        
-        
-        
-      }
+      
       return (
         <>
           {/* <ModalCloseButton  onClick={()=> probando()} /> */}
           {/* <Button onClick={()=> open? isopen : null}>Open Modal</Button> */}
-          <Button   onClick={onOpen} >Delete</Button >
+          <Button leftIcon={<DeleteIcon/>} colorScheme="red"  onClick={onOpen} >Delete</Button >
     
           <Modal   position="absolute"   isOpen={isOpen} onClose={onClose} >
             {/* <ModalOverlay /> */}
             <ModalContent   boxShadow="none" >
             <ContainAlert   >
-              <Alert status="error" width="460px">
+              <Alert  status="error" width="460px">
                 <AlertIcon />
-                <AlertTitle><Text>
-                    Tu personaje fue eliminado
+                <AlertTitle ><Text>
+                    Your character was deleted
                     </Text>
                     
                          </AlertTitle>
             
                 
-                <ModalCloseButton  onClick={onClose}  />
+                <ModalCloseButton onClick={onClose}  />
               </Alert>
               </ContainAlert>
   

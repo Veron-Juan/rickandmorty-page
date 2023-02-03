@@ -11,6 +11,8 @@ import switchstyles from "../src/assets/Switch/switchStyle.css"
 import logo from "../public/logoRickAndMorty.png"
 import styled  from "styled-components";
 import Header from "./components/Header"
+import Detail from "./pages/Detail/Detail"
+import Inicio from "./pages/Inicio"
 
 
 // const themes = {
@@ -83,6 +85,8 @@ function App() {
         <Route path="/favorites" element={<Favorites/>}/>
         <Route path="/character" element={<Character/>}/>
         <Route path="/episodies" element={<Episodies/>}/>
+        <Route path="/detail" element={<Detail/>}/>
+        <Route path="/inicio" element={<Inicio/>}/>
 
 
       </Routes>

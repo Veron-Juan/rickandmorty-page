@@ -12,13 +12,14 @@ import {
    useDisclosure, 
    ModalFooter
  } from '@chakra-ui/react'
- import { ArrowBackIcon } from '@chakra-ui/icons'
+ import { ArrowBackIcon, DeleteIcon } from '@chakra-ui/icons'
 import { ContainerCharacters, CharacterCards } from '../../styled-components/Layout'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { removeFavorite } from '../../state/reducers/favoriteSlice'
 import styled, { keyframes } from 'styled-components'
 import Header from '../../components/Header'
+import CardCharacter from '../../components/CardCharacter'
 
 const breatheAnimation = keyframes`
  0%{transform:scale3d(1,1,1)}30%{transform:scale3d(1.25,.75,1)}40%{transform:scale3d(.75,1.25,1)}50%{transform:scale3d(1.15,.85,1)}65%{transform:scale3d(.95,1.05,1)}75%{transform:scale3d(1.05,.95,1)}100%{transform:scale3d(1,1,1)}
@@ -66,37 +67,18 @@ const Favorites = () => {
     <ContainerCharacters>
         {favoritesAdded.map((i)=> {
           return (
-            <CharacterCards key={i.id}>
-              <img src={i.image} />
-              <p>{i.name}</p>
-              <p>{i.status}</p>
-              <p>{i.species}</p>
-              <p>location: {i.location.name}</p>
-              
-              <div onClick={()=> dispatch(removeFavorite(i.id))}>
-              <Button onClick={onOpen}  colorScheme="red" >Delete</Button>
-              </div>
-            
-              
-               <Modal isOpen={isOpen} onClose={onClose} position="absolute" >
-                {/* <ModalOverlay /> */}
-                <ModalContent boxShadow="none">
-                  <ContainAlert  >
-                    <Alert status="error" width="460px">
-                      <AlertIcon />
-                      <AlertTitle>
-                        <Text>Confirmas eliminar?
-              
-                        </Text>
-                      </AlertTitle>
+            <CardCharacter key={i.id}
+            image={i.image}
+            name={i.name}
+            status={i.status}
+            specie={i.species}
+            probando={i.id}
+            personaje={i.id}
+            succes={true}
+            >
 
-                      <ModalCloseButton  onClick={onClose} />
-                    </Alert>
-                  </ContainAlert>
-                </ModalContent>
-              </Modal> 
-              
-            </CharacterCards>
+            </CardCharacter>
+           
           );
         })}
     </ContainerCharacters>

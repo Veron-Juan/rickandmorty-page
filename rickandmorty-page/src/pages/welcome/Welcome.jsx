@@ -13,6 +13,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
+
 function Welcome() {
 
     const dispatch = useDispatch();
@@ -28,20 +30,23 @@ function Welcome() {
     }
 
   return (
-    <div>
+    <>
+      
       <Text fontSize="50px">WELCOME</Text>
       <FormControl isRequired>
-        <FormLabel>Ingresa tu nombre</FormLabel>
-        <Input placeholder="Juan" ref={nameRef} />
+        <FormLabel>Ingresa tu nombrasdasde</FormLabel>
+        <Input placeholder="Juanse" ref={nameRef} />
       </FormControl>
+      
       <br />
       <Button onClick={handleSubmit} >Ingresar</Button>
       <br/>
-      <br/>
-      <br/>
-      <br/>
-      <Heading>HOLA </Heading>
-    </div>
+      
+      <Heading>HOLAa </Heading>
+      
+      
+      </>
+    
   );
 }
 

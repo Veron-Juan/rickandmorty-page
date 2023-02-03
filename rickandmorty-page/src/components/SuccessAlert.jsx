@@ -8,9 +8,10 @@ import {
     Alert,
     AlertIcon,
     AlertTitle,
-    Text
+    Text,
+    useColorModeValue
   } from '@chakra-ui/react'
-
+  import { StarIcon } from '@chakra-ui/icons'
   import { Link } from 'react-router-dom'
 
 import { useDisclosure } from '@chakra-ui/react'
@@ -40,43 +41,29 @@ const ContainAlert = styled.div`
 
         const { isOpen, onOpen, onClose } = useDisclosure()
   
-      const [alarma, setAlarma] = useState(true)
-      const [open, setOpen] = useState(false)
-  
-      const probando = ()=>{
-        setTimeout(() => {
-          
-          
-        }, 2000);
-        setOpen(!open)
-        
-        
-        
-      }
+      const bg = useColorModeValue('#c6f6d5', '#c6f6d5')
       return (
         <>
-          {/* <ModalCloseButton  onClick={()=> probando()} /> */}
-          {/* <Button onClick={()=> open? isopen : null}>Open Modal</Button> */}
-          <Button colorScheme="teal"  onClick={onOpen} >Save</Button>
+    
+          <Button leftIcon={<StarIcon/>} colorScheme="teal"  onClick={onOpen} >Save</Button>
     
           <Modal   position="absolute"   isOpen={isOpen} onClose={onClose} >
-            {/* <ModalOverlay /> */}
             <ModalContent   boxShadow="none" >
             <ContainAlert   >
-              <Alert status="success" width="460px">
+              <Alert bg={bg}  status="success" width="460px">
                 <AlertIcon />
-                <AlertTitle><Text>
+                <AlertTitle><Text color="black">
                     Tu personaje fue guardado! visitalo en
                     </Text>
-                    <Link onClick={()=> window.scroll(0,0)} to="/favorites">
-                        <u 
+                    <Link  onClick={()=> window.scroll(0,0)} to="/favorites">
+                        <u style={{color:"black"}}
                         
                          >Favoritos</u> 
                          </Link> 
                          </AlertTitle>
             
                 
-                <ModalCloseButton  onClick={onClose}  />
+                <ModalCloseButton color="black" onClick={onClose}  />
               </Alert>
               </ContainAlert>
   

@@ -17,10 +17,11 @@ margin: 0 auto;
 export const ContainerCharacters = styled.div`
 display: grid;
 margin: 0 auto;
-max-width: 1200px;
+max-width: 1000px;
 gap: 25px;
+justify-items: center;
     /* grid-auto-rows: 290px; */
-grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
 `
 export const CharacterCards = styled.div`
 

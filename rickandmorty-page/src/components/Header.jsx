@@ -100,17 +100,28 @@ ul{
 }
 
 `
-const LinkRout = styled(Link)`
-        
-        
-        font-size: 17px;
+export const LinkRout = styled(Link)`
+
+        font-size: 15px;
         color: #286b6a;
-        font-weight: bold;
+      font-weight: 600;
+      margin-left: 6px;
         &:hover{
             background-color: aliceblue;
             color: #709fcd;
             width: 100%;
         }
+`
+const LinksHeader = styled(Link)`
+font-weight: 600;
+font-size: 17px;
+color: #42B4CA;;
+&:hover{
+  text-decoration: underline;
+}
+&:active{
+  color: #286b6a;
+}
 `
 
 const BackLogo = styled.div`
@@ -196,105 +207,127 @@ function Header() {
 
     
 
-      const bg = useColorModeValue('light', 'blue.500')
+      const bg = useColorModeValue('light', '#42B4CA;')
       const color = useColorModeValue('white', 'gray.800')
 
 
 
   return (
-    
-      
     <HeaderContainer>
-      <img style={{maxWidth:"130px", minWidth:"90px"}} src={logorickandmorty} />
+      <img
+        style={{ maxWidth: "130px", minWidth: "90px" }}
+        src={logorickandmorty}
+      />
+      <img
+      
+      />
       <ContainerMenuBurguer>
-      <HamburgerIcon cursor="pointer" fontSize="32px" onClick={onOpen} position="absolute" top="7px" right="18px" />
+        <HamburgerIcon
+          cursor="pointer"
+          fontSize="32px"
+          onClick={onOpen}
+          position="absolute"
+          top="7px"
+          right="18px"
+        />
       </ContainerMenuBurguer>
       <Drawer
         isOpen={isOpen}
-        placement='right'
+        placement="right"
         onClose={onClose}
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <Flex marginTop="5px" align="center" justify="center"  >
-      <label  className="switch" >
-        <input  type="checkbox" onClick={toggleColorMode}   />
-          <span className="slider round"></span>
-      </label>
-      <Flex bg={bg} align="center" justify="center" borderRadius="50%" >
-      <BackLogo >
-        <img  src={logo} alt="Dark Mode"/>
-      </BackLogo>
-      </Flex>
-      </Flex>
+          <Flex marginTop="5px" align="center" justify="center">
+            <label className="switch">
+              <input type="checkbox" onClick={toggleColorMode} />
+              <span className="slider round"></span>
+            </label>
+            <Flex bg={bg} align="center" justify="center" borderRadius="50%">
+              <BackLogo>
+                <img src={logo} alt="Dark Mode" />
+              </BackLogo>
+            </Flex>
+          </Flex>
           <DrawerHeader>
-          <Link as={RouteLink} to="/favorites">Favorites</Link>
+            <LinksHeader color="teal" as={RouteLink} to="/home">
+              Home
+            </LinksHeader>
           </DrawerHeader>
           <DrawerHeader>
-          <Link as={RouteLink} to="/favorites">Location</Link>
+            <LinksHeader as={RouteLink} to="/favorites">
+              Favorites
+            </LinksHeader>
           </DrawerHeader>
           <DrawerHeader>
-          <Link as={RouteLink} to="/home">Home</Link>
+            <LinksHeader as={RouteLink} to="/favorites">
+              Location
+            </LinksHeader>
           </DrawerHeader>
           <DrawerHeader>
-          <Link as={RouteLink} to="/favorites">This repository</Link>
+            <LinksHeader as={RouteLink} to="/favorites">
+              Repository
+            </LinksHeader>
           </DrawerHeader>
           <DrawerHeader>
-          <Link as={RouteLink} to="/favorites">About me</Link>
+            <LinksHeader as={RouteLink} to="/favorites">
+              About me
+            </LinksHeader>
           </DrawerHeader>
-          
-
-          
-    
-          
         </DrawerContent>
       </Drawer>
-      <Search >
+      <Search>
         <InputGroup>
           <InputLeftElement children={<Search2Icon color="gray.300" />} />
-          <Input multiple onChange={handleChange} value={busqueda} placeholder="Search" width="250px" />
+          <Input
+            multiple
+            onChange={handleChange}
+            value={busqueda}
+            placeholder="Search"
+            width="250px"
+          />
         </InputGroup>
-        <MenuSelected isRight={busqueda}  >
-            {characters.map((i)=> {
-                return(
-                    <ul key={i.id} value={i.id}>
-                        <img src={i.image}/>
-                        <LinkRout to={`/character?id=${i.id}`} >{i.name}</LinkRout>
-                    </ul>
-                )
-            })}
-      </MenuSelected>
+        <MenuSelected isRight={busqueda}>
+          {characters.map((i) => {
+            return (
+              <ul key={i.id} value={i.id}>
+                <img src={i.image} />
+                <LinkRout to={`/character?id=${i.id}`}>{i.name}</LinkRout>
+              </ul>
+            );
+          })}
+        </MenuSelected>
       </Search>
-       
-      
-      
+
       <LogoHeader>
-      <label  className="switch" >
-        <input  type="checkbox" onClick={toggleColorMode}   />
+        <label className="switch">
+          <input type="checkbox" onClick={toggleColorMode} />
           <span className="slider round"></span>
-      </label>
-      <Flex bg={bg} align="center" justify="center" borderRadius="50%" >
-      <BackLogo >
-        <img  src={logo} alt="Dark Mode"/>
-      </BackLogo>
-      </Flex>
+        </label>
+        <Flex bg={bg} align="center" justify="center" borderRadius="50%">
+          <BackLogo>
+            <img src={logo} alt="Dark Mode" />
+          </BackLogo>
+        </Flex>
       </LogoHeader>
-      
+
       <Links>
-      
-      
-        
-      <LinkRout  to="/favorites">Home</LinkRout>
-      <LinkRout  to="/favorites">Favorites</LinkRout>
-      <LinkRout  to="/favorites">Location</LinkRout>
-      <LinkRout  to="/favorites">About me</LinkRout>
-        
-      
+        <LinksHeader  to="/home">
+          Home
+        </LinksHeader>
+        <LinksHeader  to="/favorites">
+          Favorites
+        </LinksHeader>
+        <LinksHeader  to="/">
+          Location
+        </LinksHeader>
+        <LinksHeader  to="/home">
+          Repository
+        </LinksHeader>
       </Links>
     </HeaderContainer>
-    
   );
 }
 

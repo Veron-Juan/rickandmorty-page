@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Heading } from '@chakra-ui/react'
+
+import { Card,  Image, Text,  Heading, Button, Stack, CardFooter, CardBody, Flex  } from '@chakra-ui/react'
 import { CharacterCards, ContainerCharacters } from '../../styled-components/Layout'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 import getUnicCharacter from '../../services/getUnicCharacter'
@@ -9,7 +10,7 @@ import SuccessAlert from '../../components/SuccessAlert'
 import { addFavorite } from '../../state/reducers/favoriteSlice'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/Header'
-
+import CardCharacter from '../../components/CardCharacter'
 
 const ConatinerCharacter = styled.div`
 display: flex;
@@ -30,6 +31,11 @@ function Character() {
     const [name, setName] = useState([]);
     const [img, setImg] = useState([]);
     const [status, setStatus] = useState([]);
+    const [gender, setgender] = useState([]);
+    const [location, setlocation] = useState([]);
+    const [episodies, setepisodies] = useState([]);
+    const [specie, setspecie] = useState([]);
+    const [origin, setorigin] = useState([]);
     
     useEffect(()=>{
         const fetchData = async ()=> {
@@ -38,16 +44,27 @@ function Character() {
             const name = newData.name;
             const image = newData.image;
             const status = newData.status;
+            const gender = newData.gender;
+            const location = newData.location.name;
+            const species = newData.species
             const juju = newData
+            const episodies = newData.episode
+            const origin = newData.origin.name
             setName(name)
             setImg(image)
             setStatus(status) 
             setData(juju)
+            setgender(gender)
+            setlocation(location)
+            setepisodies(episodies)
+            setspecie(species)
+            setorigin(origin)
+            
             
         };
         fetchData()
     }, [{keyword}])
-
+    
 
     const AgregarFav = (personaje)=>{
         const exist = favoritesAdded.find(i=> i.id === personaje.id)
@@ -61,6 +78,7 @@ function Character() {
           
         }
       }
+      
   return (
     <>
     <Header/>
@@ -71,8 +89,34 @@ function Character() {
     onClick={()=> navigate(-1)}
     cursor="pointer"
     />
-    <ContainerCharacters>
-        <CharacterCards>
+    <Card maxWidth="320px" margin="0 auto" >
+        <CardBody display="flex" justifyContent="center" flexDirection="column" alignItems="center">
+              <Image width="270px" _hover={{transform:"scale(1.02)", transition:"all, .5s"}} borderRadius="10px" src={img} alt={name} />
+              <Heading color="teal" size="sm" textAlign="center" margin="5px 0">{data.name}</Heading>
+              <Text fontWeight={700}>Status: {status} </Text>
+              <Text fontWeight={700}>Specie: {specie} </Text>
+              <Text fontWeight={700}>Gender: {gender} </Text>
+              
+              <Text fontWeight={700}>Location: {location} </Text>
+              <Text fontWeight={700}>Origin: {origin} </Text>
+              <Text fontWeight={700}>Episodies: {episodies.length} </Text>
+              
+           
+              
+              
+              </CardBody>
+              </Card>
+    {/* <ContainerCharacters>
+    <CardCharacter
+    image={data.image}
+    name={data.name}
+    alt={data.name}
+    status={data.gender}
+    personaje={data}
+    >
+
+    </CardCharacter>
+        {/* <CharacterCards>
             <img src={img}/>
             <p>{name}</p>
             <p>{status}</p>
@@ -81,8 +125,9 @@ function Character() {
               colorScheme='messenger'
               >Save</SuccessAlert>
               </div>
-        </CharacterCards>
-    </ContainerCharacters>
+        </CharacterCards> */}
+    
+    
     </>
   )
 }

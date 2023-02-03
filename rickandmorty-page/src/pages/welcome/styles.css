@@ -1,0 +1,221 @@
+
+@keyframes move-background {
+    from {
+          -webkit-transform: translate3d(0px, 0px, 0px);
+      }
+      to { 
+          -webkit-transform: translate3d(1000px, 0px, 0px);
+      }
+  }
+  @-webkit-keyframes move-background {
+    from {
+          -webkit-transform: translate3d(0px, 0px, 0px);
+      }
+      to { 
+          -webkit-transform: translate3d(1000px, 0px, 0px);
+      }
+  }
+  
+  @-moz-keyframes move-background {    
+      from {
+          -webkit-transform: translate3d(0px, 0px, 0px);
+      }
+      to { 
+          -webkit-transform: translate3d(1000px, 0px, 0px);
+      }
+  }
+  
+      @-webkit-keyframes move-background {
+      from {
+          -webkit-transform: translate3d(0px, 0px, 0px);
+      }
+      to { 
+          -webkit-transform: translate3d(1000px, 0px, 0px);
+      }
+  }
+  
+  .background-container{
+      position: fixed;
+      top: 0;
+      left:0;
+      bottom: 0;
+      right: 0;
+  }
+  
+  .stars {
+   background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+   position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: block;
+        z-index: 0;
+  }
+  
+  .twinkling{
+      width:100%;
+      height: 100%;
+      background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png") repeat;
+      background-size: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      /* z-index: 2; */
+      
+      -moz-animation:move-background 10s linear infinite;
+    -ms-animation:move-background 10s linear infinite;
+    -o-animation:move-background 10s linear infinite;
+    -webkit-animation:move-background 10s linear infinite;
+    animation:move-background 10s linear infinite;
+      
+  }
+  
+  .clouds{
+      width:100%;
+      height: 100%;
+      background: transparent url("../../assets/planet.png") ;
+      background-size: 1000px 1000px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      
+  
+     -moz-animation:move-background 150s linear infinite;
+    -ms-animation:move-background 150s linear infinite;
+    -o-animation:move-background 150s linear infinite;
+    -webkit-animation:move-background 150s linear infinite;
+    animation:move-background 10s linear infinite;
+  }
+  /* img{
+    height: 70vh;
+    width:70vh;
+    position: absolute;
+    
+    right: 20px;
+  } */
+    
+
+
+/* float */
+
+@keyframes float {
+	0% {
+		
+		transform: translatey(0px);
+	}
+	50% {
+		
+		transform: translatey(-20px);
+	}
+	100% {
+		
+		transform: translatey(0px);
+	}
+}
+
+.starfloat{
+    animation: float 6s ease-in-out infinite;
+    height: 100%;
+    margin-left: 150px;
+    margin-top: 500px;
+    background-image:  url("../../assets/planet.png");
+    background-repeat: no-repeat;
+}
+
+.pepinorick{
+    animation: float 2s ease-in-out infinite;
+    
+    height: 230px;
+    width: 150px;
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    background-image:  url("../../assets/rickpepino-removebg-preview.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@keyframes round{
+    0% {
+        transform: rotate(0deg) scale(1);
+      }
+      
+      100% {
+        transform: rotate(360deg)  scale(3.4) translateY(40px);
+      }
+
+   
+    
+}
+
+.img-principal{
+    width: 310px;
+    height: 310px;
+    object-fit: cover;
+    position:absolute;
+    top: 5px;
+    right: 74px;
+    animation: float 3.5s ease-in-out infinite;
+    
+}
+.img-principal-efect{
+    width: 310px;
+    height: 310px;
+    object-fit: cover;
+    position:absolute;
+    top: 5px;
+    right: 74px;
+    animation: round 2s ease-in-out  ;
+}
+
+.content-principal{
+    width: 450px;
+    height: 650px;
+    /* border: 2px solid white; */
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    
+    z-index: 1000;
+}
+
+.title{
+    font-size: 32px;
+    color: white;
+    margin-left: 37%;
+    margin-top: 350px;
+    
+}
+
+.move {
+    position: relative;
+    animation: movement 11s linear infinite;
+    width: 300px;
+    height: 300px;
+    z-index: -1;
+    
+  }
+  
+  @keyframes movement {
+    from {
+      left: 500px;
+      top: 0;
+    }
+    to {
+      left: -50%;
+      top: -1300px;
+    }
+    0% {
+        transform: rotate(0deg) ;
+      }
+      
+      100% {
+        transform: rotate(360deg);
+      }
+  }
