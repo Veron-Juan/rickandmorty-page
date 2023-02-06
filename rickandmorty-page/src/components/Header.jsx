@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import vite from "../../public/vite.svg"
+import  "../assets/Switch/switchStyle.css"
 import { Input, InputGroup, InputLeftElement, useColorMode, useColorModeValue, Flex,  Drawer,
   DrawerBody,
   DrawerFooter,
@@ -44,7 +45,6 @@ justify-content: space-evenly;
 @media (max-width: 540px) {
     flex-direction: column;
     margin-top: 5px;
-    margin-bottom: 30px;
     gap: 10px;
     height: 100%;
   }

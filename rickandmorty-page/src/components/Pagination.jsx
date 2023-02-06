@@ -10,7 +10,7 @@ display: flex;
 align-items: center;
 justify-content: space-evenly;
 height: 62px;
-border: 1px solid black;
+margin: 15px 0;
 
 ul{
     display: flex;
@@ -19,5 +19,10 @@ ul{
     li{
         margin: 10px;
     }
+}
+
+@media  (max-width:364px) {
+    flex-direction: column;
+    margin-top: 27px;
 }
 `

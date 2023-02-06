@@ -11,6 +11,7 @@ import { addFavorite } from '../../state/reducers/favoriteSlice'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/Header'
 import CardCharacter from '../../components/CardCharacter'
+import { Aber } from '../home/Home'
 
 const ConatinerCharacter = styled.div`
 display: flex;
@@ -73,61 +74,40 @@ function Character() {
         }
         else{
           console.log("repetido pa");
-          
-          
-          
+
         }
       }
       
   return (
     <>
     <Header/>
-    <Heading>Personaje</Heading>
+    <Aber>Character</Aber>
     <ArrowBackIcon
-    fontSize="80px"
-    color="blue.500"
+    fontSize="60px"
+    color="teal"
     onClick={()=> navigate(-1)}
     cursor="pointer"
+    marginLeft="10px"
     />
-    <Card maxWidth="320px" margin="0 auto" >
-        <CardBody display="flex" justifyContent="center" flexDirection="column" alignItems="center">
-              <Image width="270px" _hover={{transform:"scale(1.02)", transition:"all, .5s"}} borderRadius="10px" src={img} alt={name} />
+    <Card maxWidth="300px" margin="25px auto" >
+        <CardBody display="stretch" justifyContent="center" flexDirection="column" alignItems="center">
+          <Image width="270px" _hover={{transform:"scale(1.02)", transition:"all, .5s"}} borderRadius="10px" src={img} alt={name} />
+              
               <Heading color="teal" size="sm" textAlign="center" margin="5px 0">{data.name}</Heading>
               <Text fontWeight={700}>Status: {status} </Text>
               <Text fontWeight={700}>Specie: {specie} </Text>
               <Text fontWeight={700}>Gender: {gender} </Text>
-              
               <Text fontWeight={700}>Location: {location} </Text>
               <Text fontWeight={700}>Origin: {origin} </Text>
               <Text fontWeight={700}>Episodies: {episodies.length} </Text>
-              
-           
-              
-              
+              <Flex marginTop="5px" justify="center" gap={2}>
+                
+                <div  onClick={()=> AgregarFav(data)}>
+              <SuccessAlert/>
+              </div>
+              </Flex> 
               </CardBody>
               </Card>
-    {/* <ContainerCharacters>
-    <CardCharacter
-    image={data.image}
-    name={data.name}
-    alt={data.name}
-    status={data.gender}
-    personaje={data}
-    >
-
-    </CardCharacter>
-        {/* <CharacterCards>
-            <img src={img}/>
-            <p>{name}</p>
-            <p>{status}</p>
-            <div onClick={()=> AgregarFav(data)}>
-              <SuccessAlert
-              colorScheme='messenger'
-              >Save</SuccessAlert>
-              </div>
-        </CharacterCards> */}
-    
-    
     </>
   )
 }

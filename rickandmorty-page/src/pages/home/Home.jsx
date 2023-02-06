@@ -1,15 +1,13 @@
 import React from 'react'
 import { Button, Heading, useColorModeValue, Card,  CardBody, Image, Text, Flex } from '@chakra-ui/react'
-import { ArrowBackIcon } from '@chakra-ui/icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Loader } from '../../components/GridSceleton'
 import { useState } from 'react'
-import {  CharacterCards, ContainerCharacters, LayoutPage } from '../../styled-components/Layout'
+import {  ContainerCharacters } from '../../styled-components/Layout'
 import Header from '../../components/Header'
 import { PaginationCont } from '../../components/Pagination'
 import { addFavorite } from '../../state/reducers/favoriteSlice'
-import SuccessAlert from '../../components/SuccessAlert'
 import { useCharecters } from '../../hooks/useCharacters'
 import CardCharacter from '../../components/CardCharacter'
 import styled from 'styled-components'
@@ -36,7 +34,7 @@ const Home = () => {
 
     const {name} = useSelector(state=> state.user)
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(false)
+   
     const dispatch = useDispatch();
     const {pages, next, prev} = useSelector(state => state.info)
     const {favoritesAdded} = useSelector(state => state.favorites)
@@ -44,7 +42,7 @@ const Home = () => {
     const [actualNum, setActualNum] = useState(1)
     
     const {personajes, informacion} = useCharecters(page)
-     
+    
     
     const nextPage = ()=>{
       setpage(informacion.next)
@@ -63,9 +61,9 @@ const Home = () => {
         console.log("repetido pa");
       }
     }
-
     
-    const bg = useColorModeValue('light', 'blue.500')
+    
+    // const bg = useColorModeValue('light', 'blue.500')
   return (
     <> 
     <Header/>
@@ -74,18 +72,21 @@ const Home = () => {
       
       <>
       <PaginationCont>
-      <Text>Total Pages: {informacion.pages} </Text>
+      <Text fontWeight="600" >Total Pages:  <Button size="sm">{informacion.pages}</Button></Text>
         <ul>
             <li>
                 {actualNum >= 2? <Button onClick={prevPage}>Prev</Button>: null }
             </li>
             <li>
+              
               <Button
-              colorScheme='messenger'
+              background='gray'
+              color="white"
+              // _hover={{color:"black"}}
               >{actualNum}</Button>
             </li>
             <li>
-                <Button onClick={nextPage}  >Next</Button>
+                <Button  onClick={nextPage}  >Next</Button>
             </li>
         </ul>
       </PaginationCont>
@@ -108,13 +109,15 @@ const Home = () => {
       }) }
       </ContainerCharacters>
       <PaginationCont>
-      <Text>Total Pages: {informacion.pages} </Text>
+      <Text>Total Pages: <Button size="sm">{informacion.pages}</Button> </Text>
         <ul>
             <li>
                 {actualNum >= 2? <Button onClick={prevPage}>Prev</Button>: null }
             </li>
             <li>
               <Button
+              background='gray'
+              color="white"
               colorScheme='messenger'
               >{actualNum}</Button>
             </li>

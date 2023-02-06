@@ -58,7 +58,7 @@ function CardCharacter(props) {
   }
 
   return (
-    <Card maxWidth="280px" margin="8px">
+    <Card maxWidth="280px" margin="8px" boxShadow="0px 0px 3px 0px black;">
         <CardBody >
               <Image _hover={{transform:"scale(1.1)", transition:"all, .5s"}} borderRadius="10px" src={props.image} alt={props.name} />
               <Heading color="teal" size="sm" textAlign="center" margin="5px 0">{props.name}</Heading>

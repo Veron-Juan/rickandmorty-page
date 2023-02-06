@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export function useCharecters (url){
     const [personajes, setPersonajes] = useState([])
     const [informacion, setInformacion] = useState([])
+    
 
     useEffect(()=>{
         fetch(url)
