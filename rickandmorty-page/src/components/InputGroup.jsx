@@ -9,7 +9,7 @@ const InputGroup = ({ total, name, setActualNum }) => {
           id={name}
           
         >
-          <option  >Choose...</option>
+          <option  >Episode</option>
 
           {[...Array(total).keys()].map((x) => {
             return (

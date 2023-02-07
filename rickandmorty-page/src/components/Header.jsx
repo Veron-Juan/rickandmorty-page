@@ -262,8 +262,8 @@ function Header() {
             </LinksHeader>
           </DrawerHeader>
           <DrawerHeader>
-            <LinksHeader as={RouteLink} to="/favorites">
-              Location
+            <LinksHeader as={RouteLink} to="/episodies">
+              Episodes
             </LinksHeader>
           </DrawerHeader>
           <DrawerHeader>
@@ -320,8 +320,8 @@ function Header() {
         <LinksHeader  to="/favorites">
           Favorites
         </LinksHeader>
-        <LinksHeader  to="/">
-          Location
+        <LinksHeader  to="/episodies">
+          Episodes
         </LinksHeader>
         <LinksHeader  to="/home">
           Repository

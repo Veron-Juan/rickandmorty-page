@@ -62,19 +62,20 @@ export default function Episodes() {
     <Header/>
     <Aber>EPISODES</Aber>
     <Flex direction="column" justifyContent="center">
-      <Flex justify="center" margin="20px auto" gap="10px">
-      <Button  onClick={prevPage} >prev</Button>
-      <InputGroup  name="Episode" setActualNum={setActualNum} total={51} />
-      <Button   onClick={nextPage}>next</Button>
+      <Flex justify="center" margin="20px auto" gap="10px" align="center">
+      {/* <Button  onClick={prevPage} >prev</Button> */}
+      <label style={{fontWeight:"600"}}  htmlFor='Episode'>Select episode</label>
+      <InputGroup  name="Episode" setActualNum={setActualNum} total={51}  />
+      {/* <Button   onClick={nextPage}>next</Button> */}
       </Flex>
       <Flex justifyContent="center" alignContent="center" direction="column" gap="15px" margin="20px auto">
-          <Heading size="lg">Name episodie: {name}</Heading>
-          <Heading size="lg">Episode: {episode}</Heading>
-          <Heading size="lg">Date: {air_date}</Heading>
+          <Heading marginLeft="12px" fontWeight="600" color="#42B4CA" size="lg">Name episode: <Text color="#42B4CA" as='b'>{name}</Text></Heading>
+          {/* <Heading fontWeight="600" color="#42B4CA" size="lg">Episode: <Text color="#42B4CA" as='b'>{episode}</Text> </Heading> */}
+          <Heading marginLeft="12px" fontWeight="600" color="#42B4CA" size="lg">Date: <Text color="#42B4CA" as='b'>{air_date}</Text></Heading>
           
     </Flex>
     </Flex>
-    <Aber>Characters episodie:</Aber>
+    <Heading fontWeight="600" textAlign="center" color="#42B4CA">Characters episodie:</Heading>
     
     
     
@@ -92,6 +93,8 @@ export default function Episodes() {
         image={i.image}
         status={i.status}
         specie={i.species}
+        probando={i.id}
+        personaje={i}
         >
         </CardCharacter>
       )
