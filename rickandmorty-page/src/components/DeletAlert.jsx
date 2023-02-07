@@ -18,7 +18,7 @@ const breatheAnimation = keyframes`
 const ContainAlert = styled.div`
  position: absolute;
  top: 80vh;
- left: 3%;
+ left: 4.5vh;
 transform: translate(-50%, -50%);
  animation: .9s ${breatheAnimation} linear both;
  animation: .9s ${breatheAnimation} linear both;
