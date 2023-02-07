@@ -101,6 +101,19 @@ color: #42B4CA;;
   color: #286b6a;
 }
 `
+const AncorLink = styled.a`
+font-weight: 600;
+font-size: 17px;
+color: #42B4CA;;
+&:hover{
+  text-decoration: underline;
+}
+&:active{
+  color: #286b6a;
+}
+`
+
+
 const BackLogo = styled.div`
 max-width: 80px;
 min-width: 60px;
@@ -227,14 +240,14 @@ function Header() {
             </LinksHeader>
           </DrawerHeader>
           <DrawerHeader>
-            <LinksHeader as={RouteLink} to="/favorites">
-              Repository
-            </LinksHeader>
+          <AncorLink href="https://github.com/Veron-Juan/rickandmorty-page" target="_blank">
+            Repository
+          </AncorLink>
           </DrawerHeader>
           <DrawerHeader>
-            <LinksHeader as={RouteLink} to="/favorites">
-              About me
-            </LinksHeader>
+          <AncorLink href="https://juanvpdev.vercel.app" target="_blank">
+            About me
+          </AncorLink>
           </DrawerHeader>
         </DrawerContent>
       </Drawer>
@@ -283,9 +296,9 @@ function Header() {
         <LinksHeader  to="/episodes">
           Episodes
         </LinksHeader>
-        <LinksHeader  to="/home">
+        <AncorLink href="https://github.com/Veron-Juan/rickandmorty-page" target="_blank">
           Repository
-        </LinksHeader>
+        </AncorLink>
       </Links>
     </HeaderContainer>
   );

@@ -20,7 +20,7 @@ justify-content: center;
 
 img{
     animation: ${portalanimation} .7s linear infinite;
-    width: 200px;
+    width: 170px;
 }
 h2{
 font-size: 40px;
@@ -34,7 +34,7 @@ export default function Loader() {
     <>
     <ContainLoader>
         <img src={portal}/>
-        <h2>LOADING...</h2>
+        <h3>LOADING...</h3>
     </ContainLoader>
     </>
   )
