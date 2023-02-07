@@ -8,7 +8,8 @@ import {
     AlertIcon,
     AlertTitle,
     Text,
-    useColorModeValue
+    useColorModeValue,
+    useMediaQuery 
   } from '@chakra-ui/react'
   import { StarIcon } from '@chakra-ui/icons'
   import { Link } from 'react-router-dom'
@@ -19,13 +20,20 @@ const breatheAnimation = keyframes`
 `
 const ContainAlert = styled.div`
  position: absolute;
- top: 80vh;
+ top: 77vh;
+ left: 3%;
+transform: translate(-50%, -50%);
  animation: .9s ${breatheAnimation} linear both;
+  
+ /* @media (max-width: 494px) {
+    width: 400px;
+  } */
+
 
 `
     function SuccessAlert() {
       const { isOpen, onOpen, onClose } = useDisclosure();
-
+      const [isLargerThan495] = useMediaQuery('(max-width: 495px)')
       const bg = useColorModeValue("#c6f6d5", "#c6f6d5");
       return (
         <>
@@ -36,17 +44,17 @@ const ContainAlert = styled.div`
           <Modal position="absolute" isOpen={isOpen} onClose={onClose}>
             <ModalContent boxShadow="none">
               <ContainAlert>
-                <Alert bg={bg} status="success" width="460px">
+                <Alert bg={bg} status="success" width="308px" height="62px" >
                   <AlertIcon />
                   <AlertTitle>
-                    <Text color="black">
+                    <Text color="black" fontSize="14px">
                       Your character was saved! visit it in 
                     </Text>
                     <Link onClick={() => window.scroll(0, 0)} to="/favorites">
                       <u style={{ color: "black" }}>Favorites</u>
                     </Link>
                   </AlertTitle>
-                  <ModalCloseButton color="black" onClick={onClose} />
+                  <ModalCloseButton paddingLeft="24px" color="black" onClick={onClose} />
                 </Alert>
               </ContainAlert>
             </ModalContent>

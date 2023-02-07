@@ -18,6 +18,9 @@ const breatheAnimation = keyframes`
 const ContainAlert = styled.div`
  position: absolute;
  top: 80vh;
+ left: 3%;
+transform: translate(-50%, -50%);
+ animation: .9s ${breatheAnimation} linear both;
  animation: .9s ${breatheAnimation} linear both;
 `
 
@@ -31,7 +34,7 @@ const ContainAlert = styled.div`
           <Modal position="absolute" isOpen={isOpen} onClose={onClose}>
             <ModalContent boxShadow="none">
               <ContainAlert>
-                <Alert status="error" width="460px">
+                <Alert status="error" width="308px" height="62px">
                   <AlertIcon />
                   <AlertTitle>
                     <Text>Your character was deleted</Text>
