@@ -5,7 +5,7 @@ import {  useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addName } from '../state/reducers/userSlice'
 import { Input, Button } from '@chakra-ui/react'
-import { Aber } from './home/Home'
+import { FontRyM} from './home/Home'
 import portal from "../assets/PORTAL.png"
 
 
@@ -29,21 +29,18 @@ export default function Inicio() {
     
     
   }
-  // className={`${animation} ? img-principal : ""` }
 
   return (
     <>
     
     <div className="background-container">
-        
-        
         <div className="stars"></div>
         <div className="twinkling"></div>
         <div className='starfloat'></div>
         <div className='pepinorick'></div>
         <div className='content-principal'>
             <img  className={animation} src={rickandmorty} />
-            <Aber style={{marginTop:"340px",marginBottom:"15px"}} >WELCOME</Aber>
+            <FontRyM style={{marginTop:"340px",marginBottom:"15px"}} >WELCOME</FontRyM>
             <Input
             placeholder='Enter Your Name'
             width="75%"
@@ -63,15 +60,11 @@ export default function Inicio() {
             colorScheme="linkedin"
             _hover={{transform:"scale(1.1)"}}
             onClick={handleSubmit}
-            
-            
             >Get Started</Button>
             <img className='move' src={portal}/>
             
         </div>
         
-        
-        {/* <div class="clouds"></div> */}
     </div>
     </>
   )

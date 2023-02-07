@@ -1,16 +1,12 @@
 import styled from "styled-components";
-import vite from "../../public/vite.svg"
 import  "../assets/Switch/switchStyle.css"
 import { Input, InputGroup, InputLeftElement, useColorMode, useColorModeValue, Flex,  Drawer,
-  DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Button,
 useDisclosure, 
-Heading} from '@chakra-ui/react'
+} from '@chakra-ui/react'
 import {Link as RouteLink
 } from "react-router-dom";
 import { Search2Icon,  HamburgerIcon, MoonIcon} from '@chakra-ui/icons'
@@ -19,17 +15,9 @@ import { Link} from "react-router-dom";
 import { useCharecters } from "../hooks/useCharacters";
 import logo from "../../public/logoRickAndMorty.png"
 import logorickandmorty from "../../public/Rick_and_Morty.svg"
-import { ThemeProvider } from "styled-components"
-import useThemeMode from "../hooks/useThemeMode."
-import GlobalStyles from "../styled-components/GlobalStyles";
-// import themes from "../styled-components/Themes";
+
+
 const API_RICKANDMORTY_CHARACTERS = "https://rickandmortyapi.com/api/character"
-
-
-
-
-
-
 const HeaderContainer = styled.header`
 max-width: 1200px;
 margin: 0 auto;
@@ -48,7 +36,6 @@ justify-content: space-evenly;
     gap: 10px;
     height: 100%;
   }
-
 ul{
     display: flex;
     list-style: none;
@@ -58,14 +45,11 @@ ul{
         cursor: pointer;
     }
 }
-
-
 `
 const Search = styled.div`
 display: flex;
 align-items: center;
 position: relative;
-
 `
 const MenuSelected = styled.div`
 position: absolute;
@@ -73,19 +57,14 @@ left: 0px;
 top:40px;
 z-index: 2;
 display: ${({ isRight}) => isRight ? 'block' : 'none'};
-
-
 ul{
     width: 250px;
     display: flex;
     align-items: center;
     background-color: #c8dae1d5;
-    
-
     img{
         width: 30px;
     }
-    
     li{
         margin: 2.2px;
         padding: 4px;
@@ -101,7 +80,6 @@ ul{
 
 `
 export const LinkRout = styled(Link)`
-
         font-size: 15px;
         color: #286b6a;
       font-weight: 600;
@@ -123,9 +101,7 @@ color: #42B4CA;;
   color: #286b6a;
 }
 `
-
 const BackLogo = styled.div`
-
 max-width: 80px;
 min-width: 60px;
 max-height: 90px;
@@ -135,15 +111,11 @@ display: flex;
 justify-content: center;
 align-items: center;
 border: 3px solid black;
-
-
-
 img{
   max-width: 80%;
   min-width: 60%;
 }
 `
-
 const Links = styled.div`
 display: flex;
 justify-content: space-around;
@@ -152,7 +124,6 @@ gap: 10px;
     display: none;
   }
 `
-
 const LogoHeader = styled.div`
 display: flex;
 align-items: center;
@@ -160,7 +131,6 @@ align-items: center;
     display: none;
   }
 `
-
 const ContainerMenuBurguer = styled.span`
 position: absolute;
 top: 32px;
@@ -175,20 +145,15 @@ right: 10px;
   }
 
 `
-
-
-
 function Header() {
 
     const [characters, setCharacters] = useState([])
     const [busqueda, setBusqueda] = useState("");
     const {personajes} = useCharecters(API_RICKANDMORTY_CHARACTERS)
-    const [theme, toggleTheme] = useThemeMode();
     const { toggleColorMode } = useColorMode()
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
-    const [check, setCheck] = useState(false)    
-    // const {a, b} = themes
+     
     
     const filtrar=(terminoBusqueda)=>{
         const resultadosBusqueda=personajes.filter((elemento)=>{
@@ -205,13 +170,8 @@ function Header() {
         filtrar(e.target.value);
       }
 
-    
-
       const bg = useColorModeValue('light', '#42B4CA;')
-      const color = useColorModeValue('white', 'gray.800')
-
-
-
+      
   return (
     <HeaderContainer>
       <img

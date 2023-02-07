@@ -7,10 +7,8 @@ const InputGroup = ({ total, name, setActualNum }) => {
         <Select
           onChange={(e) => setActualNum(e.target.value)}
           id={name}
-          
         >
           <option  >Episode</option>
-
           {[...Array(total).keys()].map((x) => {
             return (
               <option key={x + 1}  value={x + 1}>

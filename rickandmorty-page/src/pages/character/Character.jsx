@@ -1,25 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-
-import { Card,  Image, Text,  Heading, Button, Stack, CardFooter, CardBody, Flex  } from '@chakra-ui/react'
-import { CharacterCards, ContainerCharacters } from '../../styled-components/Layout'
+import { Card,  Image, Text,  Heading, CardBody, Flex  } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
-import getUnicCharacter from '../../services/getUnicCharacter'
 import { useSelector, useDispatch } from 'react-redux'
 import SuccessAlert from '../../components/SuccessAlert'
 import { addFavorite } from '../../state/reducers/favoriteSlice'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/Header'
-import CardCharacter from '../../components/CardCharacter'
-import { Aber } from '../home/Home'
-
-const ConatinerCharacter = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-width: 100%;
-height: 100vh;
-`
+import { FontRyM } from '../home/Home'
 
 
 function Character() {
@@ -60,8 +47,6 @@ function Character() {
             setepisodies(episodies)
             setspecie(species)
             setorigin(origin)
-            
-            
         };
         fetchData()
     }, [{keyword}])
@@ -73,15 +58,14 @@ function Character() {
           dispatch(addFavorite(personaje))
         }
         else{
-          console.log("repetido pa");
+          console.log("repeat");
 
         }
       }
-      
   return (
     <>
     <Header/>
-    <Aber>Character</Aber>
+    <FontRyM>Character</FontRyM>
     <ArrowBackIcon
     fontSize="60px"
     color="teal"
@@ -100,8 +84,7 @@ function Character() {
               <Text fontWeight={700}>Location: {location} </Text>
               <Text fontWeight={700}>Origin: {origin} </Text>
               <Text fontWeight={700}>Episodies: {episodies.length} </Text>
-              <Flex marginTop="5px" justify="center" gap={2}>
-                
+              <Flex marginTop="5px" justify="center" gap={2}>  
                 <div  onClick={()=> AgregarFav(data)}>
               <SuccessAlert/>
               </div>

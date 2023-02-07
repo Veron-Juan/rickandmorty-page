@@ -1,11 +1,6 @@
 import { useColorMode } from "@chakra-ui/react";
 import styled  from "styled-components";
 
-
-
-
-
-
 export const LayoutPage = styled.div`
 display: flex;
 flex-direction: column;
@@ -36,5 +31,5 @@ margin: 0 25px;
 box-shadow: 0 0 2px 0px black;
 
 `
-// background-color: ${({ theme }) => theme.colors.prueba};
+
 
