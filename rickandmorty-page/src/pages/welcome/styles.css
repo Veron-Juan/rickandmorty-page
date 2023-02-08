@@ -118,11 +118,13 @@
 
 .starfloat{
     animation: float 6s ease-in-out infinite;
-    height: 100%;
+    height: 200px;
+    
     margin-left: 150px;
     margin-top: 500px;
     background-image:  url("../../assets/planet.png");
     background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .pepinorick{
@@ -131,11 +133,24 @@
     height: 230px;
     width: 150px;
     position: absolute;
-    top: 50px;
-    right: 100px;
+    top: 40px;
+    right: 20px;
     background-image:  url("../../assets/rickpepino-removebg-preview.png");
     background-repeat: no-repeat;
     background-position: center;
+
+    
+}
+@media (max-width: 810px){
+    .pepinorick{
+        top: 6px;
+        right: 0;
+        
+    }
+    .starfloat{
+        margin-left: 20px;
+        margin-top: 520px;
+    }
 }
 
 @keyframes round{
@@ -196,8 +211,8 @@
 .move {
     position: relative;
     animation: movement 11s linear infinite;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     z-index: -1;
     
   }
